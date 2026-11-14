@@ -110,29 +110,13 @@ select{width:130px}
 .best #st{font:800 2.1rem/1 "Bahnschrift",Arial,sans-serif;color:var(--acc);text-decoration:underline;text-decoration-color:var(--gold);text-decoration-thickness:3px;text-underline-offset:5px}
 .best .bp{margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);font-weight:700}.best .bp b{color:var(--acc);font-size:1.1rem}
 .mode{position:relative}
-#modebtn{height:38px;padding:0 12px;display:flex;align-items:center;gap:8px;background:var(--paper);color:var(--ink);border:1px solid var(--line);cursor:pointer;font:inherit;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase}
-#modebtn i{font-style:normal;font-size:.75rem;color:var(--acc)}
+#langbtn{height:38px;padding:0 12px;display:flex;align-items:center;gap:8px;background:var(--paper);color:var(--ink);border:1px solid var(--line);cursor:pointer;font:inherit;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase}
+#langbtn i{font-style:normal;font-size:.75rem;color:var(--acc)}
 .menu{position:absolute;top:44px;left:0;min-width:170px;z-index:30;background:var(--paper);border:1px solid var(--line);border-top:3px solid var(--acc);box-shadow:0 6px 18px rgba(0,0,0,.25)}
 .menu[hidden]{display:none}
 .menu button{display:block;width:100%;text-align:left;padding:9px 14px;border:0;border-bottom:1px dashed var(--line);background:transparent;color:var(--ink);cursor:pointer;font:inherit;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}
 .menu button:last-child{border-bottom:0}.menu button:hover{background:var(--in)}.menu button.on{color:var(--acc);font-weight:700}
-.anim #modebtn:active{transform:scale(.96)}
-[data-mode="import"] .layout{display:none}
-#importview[hidden]{display:none}
-.ip{background:var(--paper);border:1px solid var(--line);border-top:3px solid var(--acc);padding:14px 16px 16px;margin-bottom:14px}
-.ip h2{margin:0 0 8px;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);border-bottom:1px dashed var(--line);padding-bottom:4px}
-.irow{display:flex;gap:8px;align-items:center;margin:8px 0}
-.irow input[type=text]{flex:1;min-width:0;padding:7px 9px;border:1px solid var(--line);border-left:3px solid var(--gold);background:var(--in);color:var(--ink);font:inherit}
-a.btn{text-decoration:none;white-space:nowrap}
-#itext{display:block;width:100%;min-height:130px;resize:vertical;padding:8px 10px;border:1px solid var(--line);border-left:3px solid var(--gold);background:var(--in);color:var(--ink);font:inherit;font-size:.78rem}
-.ist{min-height:1.4em;font-size:.82rem;color:var(--mut);margin:8px 0 0}.ist.err{color:var(--acc)}
-#iskill{width:min(100%,420px);text-align:left}
-.chips{display:grid;grid-template-columns:repeat(auto-fit,minmax(105px,1fr));gap:8px;margin:10px 0}
-.chip{border:1px solid var(--line);background:var(--in);padding:6px 8px;text-align:center}.chip b{display:block;color:var(--acc);font-size:1.15rem}.chip span{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
-.eff{display:flex;gap:8px;align-items:flex-start;padding:6px 10px;border:1px solid var(--line);border-left:3px solid var(--gold);background:var(--in);margin:6px 0;font-size:.8rem}.eff small{display:block;color:var(--mut)}.eff input{margin-top:3px}
-.cfx{font-size:.78rem;color:var(--mut);margin:4px 0}.cfx b{color:var(--ink)}
-.impnote{margin:0 0 12px;padding:8px 12px;border:1px solid var(--gold);border-left:4px solid var(--acc);background:var(--paper);font-size:.82rem;display:flex;justify-content:space-between;gap:10px}
-.impnote[hidden]{display:none}.impnote button{background:none;border:0;color:var(--mut);cursor:pointer;font-size:1rem}
+.anim #langbtn:active{transform:scale(.96)}
 .bx{display:contents}.bx[hidden]{display:none}.bxrow{display:contents}
 .hint{color:var(--mut);font-size:.8rem;margin:0 0 10px}
 .coin{border:1px solid var(--line);border-left:4px solid var(--gold);background:var(--in);padding:8px 12px;margin:10px 0}
@@ -165,34 +149,20 @@ th:first-child,td:first-child{text-align:left}
 </head>
 <body>
 <div class="wrap">
-<header><h1>Limbus <b>Damage</b> Calculator</h1><div class="hb"><div class="mode"><button id="modebtn" aria-haspopup="true" aria-expanded="false"><span id="modelabel">Damage Calc</span><i>▾</i></button><div class="menu" id="modemenu" hidden><button data-m="calc" class="on">Damage Calc</button><button data-m="import">Import</button></div></div><button id="clogbtn" aria-label="Changelog" title="Changelog"><i></i></button><button id="gear" aria-label="Settings" title="Settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M19.64 9.64 L22.84 10.14 L22.84 13.86 L19.64 14.36 L19.08 15.73 L20.98 18.35 L18.35 20.98 L15.73 19.08 L14.36 19.64 L13.86 22.84 L10.14 22.84 L9.64 19.64 L8.27 19.08 L5.65 20.98 L3.02 18.35 L4.92 15.73 L4.36 14.36 L1.16 13.86 L1.16 10.14 L4.36 9.64 L4.92 8.27 L3.02 5.65 L5.65 3.02 L8.27 4.92 L9.64 4.36 L10.14 1.16 L13.86 1.16 L14.36 4.36 L15.73 4.92 L18.35 3.02 L20.98 5.65 L19.08 8.27Z M12 8.6a3.4 3.4 0 1 0 0 6.8a3.4 3.4 0 1 0 0-6.8Z"/></svg></button></div></header>
-<div class="impnote" id="impnote" hidden></div>
-<section id="importview" hidden>
-<div class="ip"><h2>Import from the Wiki</h2>
-<p class="hint">1. Open an ID page on the Limbus Company wiki. 2. Press Ctrl+A, then Ctrl+C, to copy the whole page. 3. Paste it below and click Analyze. The site cannot open the wiki by itself (browser security), so Claude reads the text you paste and finds the Skills and the damage modifiers, all at their maximum values.</p>
-<div class="irow"><a class="btn" id="iopen" href="https://limbuscompany.wiki.gg/" target="_blank" rel="noopener">Open the Wiki</a></div>
-<textarea id="itext" placeholder="On the wiki page: press Ctrl+A, then Ctrl+C. Come back here and paste (Ctrl+V)."></textarea>
-<div class="irow"><button class="btn" id="ianalyze">Analyze with Claude</button><button class="btn" id="istop" hidden>Stop</button></div>
-<div class="ist" id="istatus"></div></div>
-<div class="ip" id="ires" hidden><h2 id="iname">ID</h2>
-<label class="f"><span>Skill</span><select id="iskill"></select></label>
-<div class="chips" id="isum"></div><div id="icoinfx"></div>
-<h2 style="margin-top:14px">User Effects Found</h2><div id="ieff"></div>
-<p class="hint">Values are taken at their maximum possible. Untick anything that does not apply, and always compare with the wiki. Effects limited to another Skill are ignored automatically. After importing you can edit everything in Damage Calc.</p>
-<button class="btn" id="iapply">Import to Damage Calc</button></div>
-</section>
+<header><h1 id="title">Limbus <b>Damage</b> Calculator</h1><div class="hb"><div class="mode"><button id="langbtn" aria-haspopup="true" aria-expanded="false"><span id="langlabel">EN</span><i>▾</i></button><div class="menu" id="langmenu" hidden><button data-l="en" class="on">English</button><button data-l="pt">Português (BR)</button></div></div><button id="clogbtn" aria-label="Changelog" title="Changelog"><i></i></button><button id="gear" aria-label="Settings" title="Settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M19.64 9.64 L22.84 10.14 L22.84 13.86 L19.64 14.36 L19.08 15.73 L20.98 18.35 L18.35 20.98 L15.73 19.08 L14.36 19.64 L13.86 22.84 L10.14 22.84 L9.64 19.64 L8.27 19.08 L5.65 20.98 L3.02 18.35 L4.92 15.73 L4.36 14.36 L1.16 13.86 L1.16 10.14 L4.36 9.64 L4.92 8.27 L3.02 5.65 L5.65 3.02 L8.27 4.92 L9.64 4.36 L10.14 1.16 L13.86 1.16 L14.36 4.36 L15.73 4.92 L18.35 3.02 L20.98 5.65 L19.08 8.27Z M12 8.6a3.4 3.4 0 1 0 0 6.8a3.4 3.4 0 1 0 0-6.8Z"/></svg></button></div></header>
+
 <div class="layout">
 <div>
 <div class="tabs"><button data-t="skill" class="on">Skill</button><button data-t="coins">Coins</button><button data-t="units">Unit Modifiers</button></div>
-<div class="panel on" id="p-skill"><h2>Skill Numbers</h2><p class="hint hl">It’s recommended to assume the Skill has all its conditionals triggered (e.g., max Base Power from On Use conditionals, etc.).</p><div id="fs"></div></div>
-<div class="panel" id="p-coins"><h2>Per-Coin Effects</h2><p class="hint"><b>Static %</b> adds to the static group (with resistances, level and crits). <b>Dynamic %</b> adds to the dynamic group, which multiplies the static group. <b>Multiplier ×</b> multiplies this coin’s final damage. <b>Bonus % of Final Damage</b> adds extra damage equal to a % of this coin’s damage. Tick <b>Different Damage Type</b> when that bonus has another type than the Skill (for example Pierce on a Blunt Skill): it then uses its own Resistance. <b>Flat Damage +</b> adds a fixed amount. <b>Atk Weight</b> sets how many targets this coin hits (0 = use the Skill’s); tick <b>Keep Weight for Next Coins</b> to carry it over to the following coins.</p><div id="cl"></div></div>
+<div class="panel on" id="p-skill"><h2>Skill Numbers</h2><p class="hint hl" id="skillnote">It’s recommended to assume the Skill has all its conditionals triggered (e.g., max Base Power from On Use conditionals, etc.).</p><div id="fs"></div></div>
+<div class="panel" id="p-coins"><h2>Per-Coin Effects</h2><p class="hint" id="coinhint"><b>Static %</b> adds to the static group (with resistances, level and crits). <b>Dynamic %</b> adds to the dynamic group, which multiplies the static group. <b>Multiplier ×</b> multiplies this coin’s final damage. <b>Bonus % of Final Damage</b> adds extra damage equal to a % of this coin’s damage. Tick <b>Different Damage Type</b> when that bonus has another type than the Skill (Slash, Pierce or Blunt) or another Sin (for example Wrath on a Pride Skill): it then uses its own Resistance. <b>Flat Damage +</b> adds a fixed amount. <b>Atk Weight</b> sets how many targets this coin hits (0 = use the Skill’s); tick <b>Keep Weight for Next Coins</b> to carry it over to the following coins.</p><div id="cl"></div></div>
 <div class="panel" id="p-units"><div class="two"><div><h2>User</h2><div id="fu"></div></div><div><h2>Target</h2><div id="ft"></div></div></div></div>
 </div>
 <div class="res"><h2>Damage Preview</h2><div class="seg" id="vseg" hidden style="margin-bottom:10px"><button data-v="main">Main Target</button><button data-v="sub">Sub-Target</button><button data-v="all">All Targets</button></div>
 <div class="stats"><div class="stat"><b id="rmin">0</b><span>Minimum</span></div><div class="stat"><b id="ravg">0</b><span>Average</span></div><div class="stat"><b id="rmax">0</b><span>Maximum</span></div></div>
 <div class="cw" id="cw"><div class="chart" id="chart"></div><div class="tip" id="tip" hidden></div></div><div class="axis"><span id="a0">0</span><span id="axl">Total Damage Distribution</span><span id="a1">0</span></div><div class="lg"><i></i>Highlighted bar = Total Damage of the current Coin Rolls</div>
 <h2>Coin Rolls: Click a Coin to Flip It</h2><p class="sm" id="sm"></p><div class="sl" id="sb"></div><div class="best"><div class="bt"><span class="bl" id="bl">Total Damage</span><b id="st">0</b></div><div class="bp">Best Roll (<b id="bv">0</b>) - P% = <b id="bp">0%</b></div><button class="btn" id="setbest" style="margin-top:10px">Set Coins to Best Roll</button></div>
-<p class="note">Formula: <a href="https://limbuscompany.wiki.gg/wiki/Damage_Formula" target="_blank" rel="noopener">Limbus Company Wiki</a> (CC BY-SA 4.0). Coin Power stacks per Heads. Heads chance = 50% + SP. <b>Best Roll</b> is the highest total damage possible with the current setup, and <b>P%</b> is the chance of rolling it. Unofficial fan project.</p>
+<p class="note" id="foot">Formula: <a href="https://limbuscompany.wiki.gg/wiki/Damage_Formula" target="_blank" rel="noopener">Limbus Company Wiki</a> (CC BY-SA 4.0). Coin Power stacks per Heads. Heads chance = 50% + SP. <b>Best Roll</b> is the highest total damage possible with the current setup, and <b>P%</b> is the chance of rolling it. Unofficial fan project.</p>
 </div>
 </div>
 </div>
@@ -239,16 +209,16 @@ function C(p,i,heads,c,sub){const co=coins[i];
  const d=Math.max(1,Math.floor(Math.max(roll*(1+S)*(1+D)*co.mult,.05*roll)+1e-9));
  let b=0;
  if(co.bonus>0){
-  if(co.bdiff){const dtB=p.stg>0?Math.max(res(co.bres),p.stg*.5+.5):res(co.bres),S2=S-dtM+dtB;   // the coin's damage, as if it had the bonus type
+  if(co.bdiff){const isSin=SINS.includes(co.btype),dtB=isSin?dtM:(p.stg>0?Math.max(res(co.bres),p.stg*.5+.5):res(co.bres)),sinB=isSin?res(co.bres):sinM,S2=S-dtM-sinM+dtB+sinB;   // the coin's damage, as if the bonus had its own type (or Sin)
    const d2=Math.max(1,Math.floor(Math.max(roll*(1+S2)*(1+D)*co.mult,.05*roll)+1e-9));b=Math.floor(d2*co.bonus/100+1e-9)}
   else b=Math.floor(d*co.bonus/100+1e-9)}
  b+=Math.floor(co.flat);
  return{roll,S:1+S,D:1+D,d,b,t:d+b,lvl,sinM,dtM,bt:co.bdiff&&co.bonus>0?co.btype:''}}
-const TYPES=['Slash','Pierce','Blunt'];
-const BX=i=>`<div class="bxrow"><label class="f"><span>Different Damage Type<small>Bonus damage with its own type</small></span><input type="checkbox" data-i="${i}" data-k="bdiff" ${coins[i].bdiff?'checked':''}></label><div class="bx" ${coins[i].bdiff?'':'hidden'}><label class="f"><span>Type</span><select data-i="${i}" data-k="btype">${TYPES.map(t=>`<option${coins[i].btype===t?' selected':''}>${t}</option>`).join('')}</select></label><label class="f"><span>Resistance<small>e.g., 1.5 = Weak</small></span><input type="number" ${attrs(CFX[0])} data-i="${i}" data-k="bres" value="${coins[i].bres}"></label></div></div>`;
+const TYPES=['Slash','Pierce','Blunt','Wrath','Lust','Sloth','Gluttony','Gloom','Pride','Envy'],SINS=TYPES.slice(3);
+const BX=i=>`<div class="bxrow"><label class="f"><span>Different Damage Type<small>Bonus damage with its own type</small></span><input type="checkbox" data-i="${i}" data-k="bdiff" ${coins[i].bdiff?'checked':''}></label><div class="bx" ${coins[i].bdiff?'':'hidden'}><label class="f"><span>Type / Sin</span><select data-i="${i}" data-k="btype">${TYPES.map(x=>`<option value="${x}"${coins[i].btype===x?' selected':''}>${x}</option>`).join('')}</select></label><label class="f"><span>Resistance<small>e.g., 1.5 = Weak</small></span><input type="number" ${attrs(CFX[0])} data-i="${i}" data-k="bres" value="${coins[i].bres}"></label></div></div>`;
 function renderCoins(N){while(coins.length<N)coins.push({fp:0,stat:0,dyn:0,mult:1,flat:0,bonus:0,aw:0,keep:0,bdiff:0,btype:'Slash',bres:1});
- $('cl').innerHTML=Array.from({length:N},(_,i)=>`<div class="coin"><h3>Coin ${i+1}</h3><div class="cg">`+CF.map(a=>`<label class="f"><span>${a[1]}${a[3]?`<small>${a[3]}</small>`:''}</span><input type="number" ${attrs(a)} data-i="${i}" data-k="${a[0]}" value="${coins[i][a[0]]}"></label>`).join('')+BX(i)+`<label class="f"><span>Keep Weight for Next Coins<small>Carries this Atk Weight over</small></span><input type="checkbox" data-i="${i}" data-k="keep" ${coins[i].keep?'checked':''}></label></div></div>`).join('')}
-const fmtP=x=>x>=.01?(x*100).toFixed(2)+'%':x>=1e-6?(x*100).toFixed(4)+'%':'<0.0001%';
+ $('cl').innerHTML=Array.from({length:N},(_,i)=>`<div class="coin"><h3>${t('Coin')} ${i+1}</h3><div class="cg">`+CF.map(a=>`<label class="f"><span>${a[1]}${a[3]?`<small>${a[3]}</small>`:''}</span><input type="number" ${attrs(a)} data-i="${i}" data-k="${a[0]}" value="${coins[i][a[0]]}"></label>`).join('')+BX(i)+`<label class="f"><span>Keep Weight for Next Coins<small>Carries this Atk Weight over</small></span><input type="checkbox" data-i="${i}" data-k="keep" ${coins[i].keep?'checked':''}></label></div></div>`).join('');if(LANG==='pt')trNode($('cl'))}
+const fmtP=x=>x<=0?'0%':x>=.01?(x*100).toFixed(2)+'%':x>=1e-6?(x*100).toFixed(4)+'%':'<0.0001%';
 function analyze(p){const N=p.N;
  const outs=[[0,0,(1-p.ph)*(1-p.pc)],[0,1,(1-p.ph)*p.pc],[1,0,p.ph*(1-p.pc)],[1,1,p.ph*p.pc]].filter(o=>o[2]>0);
  const cs=[...new Set(outs.map(o=>o[1]))];
@@ -288,14 +258,14 @@ function drawBars(bins,mn,w,mx,sel,top){
 function showTip(bar){const tip=$('tip');
  if(!bar||bar.dataset.p===undefined){tip.hidden=true;return}
  const lo=+bar.dataset.lo,hi=+bar.dataset.hi;
- tip.innerHTML=`<b>Damage ${lo===hi?lo:lo+'\u2013'+hi}</b><br>Chance: ${approx?'\u2248 ':''}${fmtP(+bar.dataset.p)}`;tip.hidden=false;
+ tip.innerHTML=`<b>${t('Damage')} ${lo===hi?lo:lo+'\u2013'+hi}</b><br>${t('Chance:')} ${approx?'\u2248 ':''}${fmtP(+bar.dataset.p)}`;tip.hidden=false;
  const r=bar.getBoundingClientRect(),fr=bar.firstChild.getBoundingClientRect(),c=$('cw').getBoundingClientRect(),tw=tip.offsetWidth;
  tip.style.left=Math.max(0,Math.min(c.width-tw,r.left-c.left+r.width/2-tw/2))+'px';
  tip.style.top=Math.max(0,fr.top-c.top-tip.offsetHeight-6)+'px'}
 function render(){const p=P();p.N=Math.round(p.N);if(p.N!==lastN){renderCoins(p.N);lastN=p.N}
  const W=weightsOf(p),multi=W.some(w=>w>1);if(!multi)view='main';
  $('vseg').hidden=!multi;document.querySelectorAll('#vseg button').forEach(b=>b.classList.toggle('on',b.dataset.v===view));
- $('axl').textContent=view==='main'?'Total Damage Distribution':view==='sub'?'Sub-Target Damage Distribution':'All Targets Damage Distribution';
+ $('axl').textContent=t(view==='main'?'Total Damage Distribution':view==='sub'?'Sub-Target Damage Distribution':'All Targets Damage Distribution');
  const a=analyze(p);approx=!a.exact;
  setT('rmin',''+a.mn,$('rmin').parentNode);setT('ravg',fl(a.avg,1),$('ravg').parentNode);setT('rmax',''+a.mx,$('rmax').parentNode);
  $('a0').textContent=a.mn;$('a1').textContent=a.mx;
@@ -303,10 +273,10 @@ function render(){const p=P();p.N=Math.round(p.N);if(p.N!==lastN){renderCoins(p.
  let tot=0,heads=0,rows='',r0=null;const forced=p.pc>=1||p.pc<=0;
  sand.forEach((s,i)=>{const ce=p.pc>=1?1:p.pc<=0?0:s.c;heads+=s.h;
   const r=C(p,i,heads,ce),rs=C(p,i,heads,ce,true);r0=r0||r;tot+=view==='main'?r.t:W[i]<=1?(view==='sub'?0:r.t):view==='sub'?rs.t:r.t+(W[i]-1)*rs.t;
-  rows+=`<div class="sr"><button class="ct ${s.h?'':'t'}${i===shakeIdx?' shake':''}" onclick="sand[${i}].h^=1;shakeIdx=${i};render()">${s.h?'H':'T'}</button><span><b>C${i+1}</b></span><label class="cc${forced?' dis':''}" title="${forced?(ce?'Crit Chance is 100%':'Crit Chance is 0%'):''}"><input type="checkbox" ${ce?'checked':''} ${forced?'disabled':''} onchange="sand[${i}].c^=1;render()">Crit</label><div>Power <b>${r.roll}</b> &middot; Dmg <b>${r.d}</b>${r.b?` (+${r.b}${r.bt?' '+r.bt:''})`:''}<small>Heads ${heads} &middot; &times;Stat ${fl(r.S,2)} &middot; &times;Dyn ${fl(r.D,2)}${W[i]>1?` &middot; Targets ${W[i]} &middot; Sub-Target ${rs.t}`:''}</small></div></div>`});
+  rows+=`<div class="sr"><button class="ct ${s.h?'':'t'}${i===shakeIdx?' shake':''}" onclick="sand[${i}].h^=1;shakeIdx=${i};render()">${t(s.h?'H':'T')}</button><span><b>${t('C')}${i+1}</b></span><label class="cc${forced?' dis':''}" title="${forced?t(ce?'Crit Chance is 100%':'Crit Chance is 0%'):''}"><input type="checkbox" ${ce?'checked':''} ${forced?'disabled':''} onchange="sand[${i}].c^=1;render()">${t('Crit')}</label><div>${t('Power')} <b>${r.roll}</b> &middot; ${t('Dmg')} <b>${r.d}</b>${r.b?` (+${r.b}${r.bt?' '+t(r.bt):''})`:''}<small>${t('Heads')} ${heads} &middot; &times;${t('Stat')} ${fl(r.S,2)} &middot; &times;${t('Dyn')} ${fl(r.D,2)}${W[i]>1?` &middot; ${t('Targets')} ${W[i]} &middot; ${t('Sub-Target')} ${rs.t}`:''}</small></div></div>`});
  $('sb').innerHTML=rows;setT('st',''+tot,$('st'));setT('bp',fmtP(a.best),$('bp').parentNode);setT('bv',''+a.mx,$('bv').parentNode);lastSeq=a.bestSeq;
- $('bl').textContent='Total Damage'+(a.mx!==a.mn&&tot===a.mx?' \u00b7 Best Roll':a.mx!==a.mn&&tot===a.mn?' \u00b7 Worst Roll':'');
- $('sm').textContent=`Level Diff ${fl(r0.lvl*100,1)}% \u00b7 Sin Res ${fl(r0.sinM*100,0)}% \u00b7 Type Res ${fl(r0.dtM*100,0)}%`;
+ $('bl').textContent=t('Total Damage')+(a.mx!==a.mn&&tot===a.mx?' \u00b7 '+t('Best Roll'):a.mx!==a.mn&&tot===a.mn?' \u00b7 '+t('Worst Roll'):'');
+ $('sm').textContent=`${t('Level Diff')} ${fl(r0.lvl*100,1)}% \u00b7 ${t('Sin Res')} ${fl(r0.sinM*100,0)}% \u00b7 ${t('Type Res')} ${fl(r0.dtM*100,0)}%`;
  const B=Math.max(1,Math.min(30,a.mx-a.mn+1)),w=(a.mx-a.mn+1)/B,bins=Array(B).fill(0),idx=t=>Math.max(0,Math.min(B-1,Math.floor((t-a.mn)/w)));
  a.pts.forEach(([t,v])=>bins[idx(t)]+=v);const top=Math.max(...bins,1e-9);
  drawBars(bins,a.mn,w,a.mx,idx(tot),top);shakeIdx=-1;ready=true}
@@ -319,29 +289,57 @@ document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{document.que
 const chart=$('chart');
 chart.addEventListener('pointerover',e=>showTip(e.target.closest&&e.target.closest('div[data-p]')));
 chart.addEventListener('pointerleave',()=>{$('tip').hidden=true});
+// ---------- i18n (English / Português BR) ----------
+let LANG='en',shownLang=null;
+const PT={"Skill": "Habilidade", "Coins": "Moedas", "Unit Modifiers": "Modificadores da Unidade", "Skill Numbers": "N\u00fameros da Habilidade", "Per-Coin Effects": "Efeitos por Moeda", "User": "Usu\u00e1rio", "Target": "Alvo", "Damage Preview": "Pr\u00e9via do Dano", "Main Target": "Alvo Principal", "Sub-Target": "Subalvo", "All Targets": "Todos os Alvos", "Minimum": "M\u00ednimo", "Average": "M\u00e9dia", "Maximum": "M\u00e1ximo", "Total Damage Distribution": "Distribui\u00e7\u00e3o do Dano Total", "Sub-Target Damage Distribution": "Distribui\u00e7\u00e3o do Dano no Subalvo", "All Targets Damage Distribution": "Distribui\u00e7\u00e3o do Dano em Todos os Alvos", "Highlighted bar = Total Damage of the current Coin Rolls": "Barra destacada = Dano Total das Rolagens atuais das Moedas", "Coin Rolls: Click a Coin to Flip It": "Rolagem das Moedas: Clique numa Moeda para Vir\u00e1-la", "Total Damage": "Dano Total", "Best Roll": "Melhor Rolagem", "Worst Roll": "Pior Rolagem", "Best Roll (": "Melhor Rolagem (", "Set Coins to Best Roll": "Colocar as Moedas na Melhor Rolagem", "Settings": "Configura\u00e7\u00f5es", "Animations": "Anima\u00e7\u00f5es", "On": "Ligado", "Off": "Desligado", "Theme": "Tema", "Light": "Claro", "Dark": "Escuro", "Reset All Values": "Redefinir Todos os Valores", "Back to the base model": "Volta ao modelo base", "Reset All": "Redefinir Tudo", "Close": "Fechar", "Staggered": "Atordoado", "Staggered+": "Atordoado+", "Staggered++": "Atordoado++", "Number of Coins": "N\u00famero de Moedas", "1 to 50": "1 a 50", "Base Power": "Poder Base", "Coin Power": "Poder da Moeda", "Per Heads, stacks. Negative = Minus Coin": "Por Cara, acumula. Negativo = Minus Coin", "Offense Level": "N\u00edvel Ofensivo", "The Skill\u2019s Base Offense Level": "O N\u00edvel Ofensivo base da Habilidade", "Extra Final Power": "Poder Final Extra", "The Skill\u2019s Final Power acquired through its own effects": "O Poder Final que a Habilidade ganha pelos pr\u00f3prios efeitos", "Clash Count": "Contagem de Clash", "+3% static each": "+3% est\u00e1tico cada", "Skill Static Damage %": "Dano Est\u00e1tico da Habilidade %", "Added to the static group (with resistances, level and crits)": "Entra no grupo est\u00e1tico (junto com resist\u00eancias, n\u00edvel e cr\u00edticos)", "Skill Dynamic Damage %": "Dano Din\u00e2mico da Habilidade %", "The Skill\u2019s Extra Damage gained from its own conditionals": "O Dano Extra que a Habilidade ganha das pr\u00f3prias condicionais", "Number of Targets (max of 15)": "N\u00famero de Alvos (m\u00e1x. de 15)", "Damage Against Sub-Targets": "Dano Contra Subalvos", "0 = same as main target": "0 = igual ao alvo principal", "Offense Level Bonus": "B\u00f4nus de N\u00edvel Ofensivo", "Static Damage %": "Dano Est\u00e1tico %", "Dynamic Damage %": "Dano Din\u00e2mico %", "Damage Up, passives, gifts": "Damage Up, passivas, gifts", "Crit Chance %": "Chance de Cr\u00edtico %", "Static Crit Bonus %": "B\u00f4nus Est\u00e1tico de Cr\u00edtico %", "On top of the base 20%": "Al\u00e9m dos 20% base", "Dynamic Crit Bonus %": "B\u00f4nus Din\u00e2mico de Cr\u00edtico %", "Extra Dynamic Damage that applies only on Crits (e.g., Crit DMG Up)": "Dano Din\u00e2mico extra que s\u00f3 vale em Cr\u00edticos (ex.: Crit DMG Up)", "Sanity (SP)": "Sanidade (PS)", "-45 to 45": "-45 a 45", "Defense Level": "N\u00edvel Defensivo", "Sin Resistance": "Resist\u00eancia de Pecado", "e.g., 1.5 = Weak": "ex.: 1.5 = Fraco", "Damage-Type Resistance": "Resist\u00eancia do Tipo de Dano", "Slash / Pierce / Blunt: e.g., 1.5 = Weak, 0.5 = Ineffective": "Corte / Perfurante / Contundente: ex.: 1.5 = Fraco, 0.5 = Ineficaz", "Stagger State": "Estado de Atordoamento", "Fragile, Protection, passives": "Fragile, Protection, passivas", "Final Power +/-": "Poder Final +/-", "Static %": "Est\u00e1tico %", "Dynamic %": "Din\u00e2mico %", "Multiplier \u00d7": "Multiplicador \u00d7", "Flat Damage +": "Dano Fixo +", "Bonus % of Final Damage": "Dano B\u00f4nus baseado em % do Dano Final", "0 = use the Skill\u2019s": "0 = usar o da Habilidade", "Different Damage Type": "Tipo de Dano Diferente", "Bonus damage with its own type": "Dano b\u00f4nus com tipo pr\u00f3prio", "Type / Sin": "Tipo / Pecado", "Resistance": "Resist\u00eancia", "Keep Weight for Next Coins": "Manter o Peso nas Pr\u00f3ximas Moedas", "Carries this Atk Weight over": "Repassa este Peso de Atq.", "Slash": "Corte", "Pierce": "Perfurante", "Blunt": "Contundente", "Wrath": "Ira", "Lust": "Lux\u00faria", "Sloth": "Pregui\u00e7a", "Gluttony": "Gula", "Gloom": "Melancolia", "Pride": "Orgulho", "Envy": "Inveja", "H": "Ca", "T": "Co", "C": "M", "Coin": "Moeda", "Power": "Poder", "Dmg": "Dano", "Heads": "Caras", "Crit": "Cr\u00edt.", "Stat": "Est", "Dyn": "Din", "Targets": "Alvos", "Damage": "Dano", "Level Diff": "Dif. de N\u00edvel", "Sin Res": "Res. de Pecado", "Type Res": "Res. de Tipo", "Crit Chance is 100%": "A Chance de Cr\u00edtico \u00e9 100%", "Crit Chance is 0%": "A Chance de Cr\u00edtico \u00e9 0%", "Version": "Vers\u00e3o", "Current": "Atual", "This version\u2019s changelog wasn\u2019t provided.": "O changelog desta vers\u00e3o n\u00e3o foi informado.", "Atk Weight": "Peso de Atq."};
+const BLK={title:{en:"Limbus <b>Damage</b> Calculator",pt:"Calculadora de <b>Dano</b> de Limbus"},skillnote:{en:"It\u2019s recommended to assume the Skill has all its conditionals triggered (e.g., max Base Power from On Use conditionals, etc.).",pt:"Recomenda-se considerar a Habilidade com todas as condicionais ativadas (ex.: Poder Base m\u00e1ximo vindo de condicionais On Use, etc.)."},coinhint:{en:"<b>Static %</b> adds to the static group (with resistances, level and crits). <b>Dynamic %</b> adds to the dynamic group, which multiplies the static group. <b>Multiplier \u00d7</b> multiplies this coin\u2019s final damage. <b>Bonus % of Final Damage</b> adds extra damage equal to a % of this coin\u2019s damage. Tick <b>Different Damage Type</b> when that bonus has another type than the Skill (Slash, Pierce or Blunt) or another Sin (for example Wrath on a Pride Skill): it then uses its own Resistance. <b>Flat Damage +</b> adds a fixed amount. <b>Atk Weight</b> sets how many targets this coin hits (0 = use the Skill\u2019s); tick <b>Keep Weight for Next Coins</b> to carry it over to the following coins.",pt:"<b>Est\u00e1tico %</b> entra no grupo est\u00e1tico (junto com resist\u00eancias, n\u00edvel e cr\u00edticos). <b>Din\u00e2mico %</b> entra no grupo din\u00e2mico, que multiplica o grupo est\u00e1tico. <b>Multiplicador \u00d7</b> multiplica o dano final desta moeda. <b>Dano B\u00f4nus baseado em % do Dano Final</b> adiciona dano extra igual a uma % do dano desta moeda. Marque <b>Tipo de Dano Diferente</b> quando esse b\u00f4nus tiver outro tipo que n\u00e3o o da Habilidade (Corte, Perfurante ou Contundente) ou outro Pecado (por exemplo, Ira numa Habilidade de Orgulho): ele passa a usar a pr\u00f3pria Resist\u00eancia. <b>Dano Fixo +</b> adiciona um valor fixo. <b>Peso de Atq.</b> define quantos alvos esta moeda acerta (0 = usar o da Habilidade); marque <b>Manter o Peso nas Pr\u00f3ximas Moedas</b> para repass\u00e1-lo \u00e0s moedas seguintes."},foot:{en:"Formula: <a href=\"https://limbuscompany.wiki.gg/wiki/Damage_Formula\" target=\"_blank\" rel=\"noopener\">Limbus Company Wiki</a> (CC BY-SA 4.0). Coin Power stacks per Heads. Heads chance = 50% + SP. <b>Best Roll</b> is the highest total damage possible with the current setup, and <b>P%</b> is the chance of rolling it. Unofficial fan project.",pt:"F\u00f3rmula: <a href=\"https://limbuscompany.wiki.gg/wiki/Damage_Formula\" target=\"_blank\" rel=\"noopener\">Limbus Company Wiki</a> (CC BY-SA 4.0). O Poder da Moeda acumula a cada Cara. Chance de Cara = 50% + SP. <b>Melhor Rolagem</b> \u00e9 o maior dano total poss\u00edvel com a configura\u00e7\u00e3o atual, e <b>P%</b> \u00e9 a chance de tir\u00e1-la. Projeto de f\u00e3 n\u00e3o oficial."}};
+const has=(o,k)=>Object.prototype.hasOwnProperty.call(o,k);
+const t=x=>LANG==='pt'&&has(PT,x)?PT[x]:x;
+const ORIG=new WeakMap();
+function trNode(r){
+ if(!r||typeof document.createTreeWalker!=='function'||typeof NodeFilter==='undefined')return;
+ const w=document.createTreeWalker(r,NodeFilter.SHOW_TEXT),list=[];while(w.nextNode())list.push(w.currentNode);
+ for(const n of list){const pn=n.parentNode&&n.parentNode.nodeName;if(pn==='SCRIPT'||pn==='STYLE')continue;
+  const o=ORIG.has(n)?ORIG.get(n):n.nodeValue,key=o.trim();if(!key)continue;
+  if(LANG==='pt'&&has(PT,key)){ORIG.set(n,o);n.nodeValue=o.replace(key,PT[key])}else if(ORIG.has(n)){n.nodeValue=ORIG.get(n);ORIG.delete(n)}}
+ if(r.querySelectorAll)r.querySelectorAll('[title],[aria-label],[placeholder]').forEach(el=>{for(const a of['title','aria-label','placeholder']){if(!el.hasAttribute(a))continue;const k='data-en-'+a;if(!el.hasAttribute(k))el.setAttribute(k,el.getAttribute(a));const en=el.getAttribute(k);el.setAttribute(a,LANG==='pt'&&has(PT,en)?PT[en]:en)}})}
+function applyLang(){
+ if(shownLang===LANG)return;shownLang=LANG;
+ document.documentElement.lang=LANG==='pt'?'pt-BR':'en';
+ for(const id in BLK){const e=$(id);if(e)e.innerHTML=BLK[id][LANG==='pt'?'pt':'en']}
+ if(document.body)trNode(document.body);
+ renderLog()}
 const CHANGELOG=[
- {v:'1.11',n:['Continued development of the Import tool.','In the Coins tab, \u201CBonus % of Final Damage\u201D can now be set to a damage type (Slash, Pierce or Blunt) different from the original Skill\u2019s, so you can set a different resistance for it (like Middle Outis, for example).','Fixed minor bugs.']},
- {v:'1.1',n:['Added the Import function, where you can import the info from an ID directly from the game wiki (open the ID page on https://limbuscompany.wiki.gg/, copy its text and paste it in the import box for Claude to read). There, you can directly see the damage from a real ID from the game and alter its values as you wish.']},
- {v:'1.06b',n:null},
- {v:'1.06',n:['Fixed minor bugs (mainly about Poise/Crits).','Removed unnecessary/redundant modifiers that collided with others while not providing much (Sin and Type Resist Stacks).','Improved the Damage Bars: they are now a bit bigger and have animations.','Improved the overall texts for better clarity and... readability, again.']},
- {v:'1.05',n:['Added Atk Weight to the Calculator and Sub-Target modifiers (like the ones we have in E.G.O Harmony Sinclair).','Slightly improved the... \u201Creadability\u201D of the \u2018Coins\u2019 tab.']},
- {v:'1.04',n:['Added the Changelog function.']},
- {v:'1.03',n:['Added A LOT of images for all the conditionals.','Changed the texts a bit for better readability.','Fixed the bugs with Skills that have a Coin Power equal to or lower than 0, which resulted in the damage bars going crazy.','Added the Settings button, and moved the Reset All, Theme and Animations buttons there.','You can now switch the site\u2019s layout between horizontal and vertical view in the Settings.']}
+ {v:'1.12',n:['Importer removed.','New translation added to the site (Brazilian Portuguese).'],p:['Removido o Importer','Adicionada a tradução Português (Brasil)']},
+ {v:'1.11',n:['Continued development of the Import tool.','In the Coins tab, \u201CBonus % of Final Damage\u201D can now be set to a damage type (Slash, Pierce or Blunt) different from the original Skill\u2019s, so you can set a different resistance for it (like Middle Outis, for example).','Fixed minor bugs.'],
+  p:['Desenvolvimento da ferramenta de import continuado','Nova opção no campo de Moedas -> \u201CDano Bônus baseado em % do Dano Final\u201D -> Agora você pode escolher ter esse dano bônus ser de um tipo de dano (corte, perfurante ou contudente) diferente da Habilidade original, permitindo você settar uma resistência diferente pra ele (como no caso da Middle Outis por exemplo)','Leves bugs corrigidos']},
+ {v:'1.1',n:['Added the Import function, where you can import the info from an ID directly from the game wiki (open the ID page on https://limbuscompany.wiki.gg/, copy its text and paste it in the import box for Claude to read). There, you can directly see the damage from a real ID from the game and alter its values as you wish.'],
+  p:['Adicionada a função Import, onde você pode importar as informações de uma ID diretamente da wiki do jogo (abra a página da ID em https://limbuscompany.wiki.gg/, copie o texto e cole na caixa de importação para o Claude ler). Lá, você pode ver diretamente o dano de uma ID real do jogo e alterar os valores como quiser.']},
+ {v:'1.06b',n:null,p:null},
+ {v:'1.06',n:['Fixed minor bugs (mainly about Poise/Crits).','Removed unnecessary/redundant modifiers that collided with others while not providing much (Sin and Type Resist Stacks).','Improved the Damage Bars: they are now a bit bigger and have animations.','Improved the overall texts for better clarity and... readability, again.'],
+  p:['Correção de pequenos bugs (principalmente sobre Poise/Críticos).','Removidos modificadores desnecessários/redundantes que colidiam com outros sem acrescentar muito (Stacks de Resistência de Pecado e de Tipo).','Barras de Dano melhoradas: agora estão um pouco maiores e têm animações.','Textos em geral melhorados para maior clareza e... legibilidade, de novo.']},
+ {v:'1.05',n:['Added Atk Weight to the Calculator and Sub-Target modifiers (like the ones we have in E.G.O Harmony Sinclair).','Slightly improved the... \u201Creadability\u201D of the \u2018Coins\u2019 tab.'],
+  p:['Adicionado o Peso de Atq. à Calculadora e modificadores de Subalvos (como os que temos na E.G.O Harmony Sinclair).','Melhoria leve na... \u201Clegibilidade\u201D da aba \u2018Moedas\u2019.']},
+ {v:'1.04',n:['Added the Changelog function.'],p:['Adicionada a função de Changelog.']},
+ {v:'1.03',n:['Added A LOT of images for all the conditionals.','Changed the texts a bit for better readability.','Fixed the bugs with Skills that have a Coin Power equal to or lower than 0, which resulted in the damage bars going crazy.','Added the Settings button, and moved the Reset All, Theme and Animations buttons there.','You can now switch the site\u2019s layout between horizontal and vertical view in the Settings.'],
+  p:['Adicionadas MUITAS imagens para todas as condicionais.','Textos levemente alterados para melhor legibilidade.','Corrigidos os bugs com Habilidades de Coin Power igual ou menor que 0, que deixavam as barras de dano descontroladas.','Adicionado o botão de Configurações, e os botões Redefinir Tudo, Tema e Animações foram movidos para lá.','Agora você pode alternar o layout do site entre a visão horizontal e a vertical nas Configurações.']}
 ];
 const NONE='This version\u2019s changelog wasn\u2019t provided.';
-const esc=t=>t.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const esc=x=>x.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
 function renderLog(){
- $('clogbody').innerHTML=CHANGELOG.map((e,i)=>`<details class="ce"${i?'':' open'}><summary><b>Version ${e.v}</b>${i?'':'<em>Current</em>'}</summary><div class="cb">${e.n&&e.n.length?'<ul>'+e.n.map(t=>`<li>${esc(t)}</li>`).join('')+'</ul>':`<p class="none">${NONE}</p>`}</div></details>`).join('');
- document.querySelectorAll('.ver').forEach(v=>v.textContent='Limbus Damage Calculator v'+CHANGELOG[0].v)}
+ const pt=LANG==='pt';
+ $('clogbody').innerHTML=CHANGELOG.map((e,i)=>{const L=(pt&&e.p)?e.p:e.n;return `<details class="ce"${i?'':' open'}><summary><b>${t('Version')} ${e.v}</b>${i?'':`<em>${t('Current')}</em>`}</summary><div class="cb">${L&&L.length?'<ul>'+L.map(x=>`<li>${esc(x)}</li>`).join('')+'</ul>':`<p class="none">${t(NONE)}</p>`}</div></details>`}).join('');
+ document.querySelectorAll('.ver').forEach(v=>v.textContent=(pt?'Calculadora de Dano de Limbus v':'Limbus Damage Calculator v')+CHANGELOG[0].v)}
 document.querySelectorAll('#vseg button').forEach(b=>b.onclick=()=>{view=b.dataset.v;render()});
 renderLog();
 const clm=$('clogmodal'),openC=()=>{clm.hidden=false;$('clogx').focus()},closeC=()=>{clm.hidden=true;$('clogbtn').focus()};
 $('clogbtn').onclick=openC;$('clogx').onclick=closeC;
 clm.addEventListener('click',e=>{if(e.target===clm)closeC()});
-const root=document.documentElement,S={anim:1,layout:'h',theme:'dark'},KEY='limbus-calc-v103';
-try{const j=JSON.parse(localStorage.getItem(KEY)||'{}');if(j.anim===0||j.anim===1)S.anim=j.anim;if(j.layout==='v')S.layout='v';if(j.theme==='light'||j.theme==='dark'||j.theme==='auto')S.theme=j.theme}catch(e){}
+const root=document.documentElement,S={anim:1,layout:'h',theme:'dark',lang:'en'},KEY='limbus-calc-v103';
+try{const j=JSON.parse(localStorage.getItem(KEY)||'{}');if(j.anim===0||j.anim===1)S.anim=j.anim;if(j.layout==='v')S.layout='v';if(j.lang==='pt')S.lang='pt';if(j.theme==='light'||j.theme==='dark'||j.theme==='auto')S.theme=j.theme}catch(e){}
 function applySettings(save){
- root.classList.toggle('anim',!!S.anim);root.dataset.layout=S.layout;
+ LANG=S.lang;root.classList.toggle('anim',!!S.anim);$('langlabel').textContent=LANG==='pt'?'PT-BR':'EN';
+ $('langmenu').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.l===LANG));applyLang();root.dataset.layout=S.layout;
  if(S.theme==='auto')delete root.dataset.theme;else root.dataset.theme=S.theme;
  document.querySelectorAll('.seg[data-k]').forEach(g=>g.querySelectorAll('button').forEach(b=>b.classList.toggle('on',String(S[g.dataset.k])===b.dataset.v)));
  if(save)try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
@@ -349,74 +347,12 @@ document.querySelectorAll('.seg[data-k] button').forEach(b=>b.onclick=()=>{const
 const modal=$('modal'),openM=()=>{modal.hidden=false;$('mx').focus()},closeM=()=>{modal.hidden=true;$('gear').focus()};
 $('gear').onclick=openM;$('mx').onclick=closeM;
 modal.addEventListener('click',e=>{if(e.target===modal)closeM()});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(!modal.hidden)closeM();else if(!clm.hidden)closeC();else if(!$('modemenu').hidden)$('modemenu').hidden=true}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(!modal.hidden)closeM();else if(!clm.hidden)closeC();else if(!$('langmenu').hidden)$('langmenu').hidden=true}});
+const langMenu=$('langmenu'),langBtn=$('langbtn');
+langBtn.onclick=e=>{e.stopPropagation();langMenu.hidden=!langMenu.hidden;langBtn.setAttribute('aria-expanded',String(!langMenu.hidden))};
+langMenu.querySelectorAll('button').forEach(b=>b.onclick=()=>{langMenu.hidden=true;langBtn.setAttribute('aria-expanded','false');if(S.lang===b.dataset.l)return;S.lang=b.dataset.l;applySettings(true);lastN=0;render()});
+document.addEventListener('click',e=>{if(!langMenu.hidden&&!(e.target.closest&&e.target.closest('.mode')))langMenu.hidden=true});
 $('reset').onclick=()=>{for(const k in lim)$(k).value=lim[k][0];$('stg').value=0;coins.length=0;sand=[];lastN=0;render();closeM()};
-// ---------- Mode switch + Import ----------
-const modeMenu=$('modemenu'),modeBtn=$('modebtn');
-function setMode(m){root.dataset.mode=m;$('importview').hidden=m!=='import';$('modelabel').textContent=m==='import'?'Import':'Damage Calc';
- modeMenu.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.m===m));modeMenu.hidden=true;modeBtn.setAttribute('aria-expanded','false')}
-modeBtn.onclick=e=>{e.stopPropagation();modeMenu.hidden=!modeMenu.hidden;modeBtn.setAttribute('aria-expanded',String(!modeMenu.hidden))};
-modeMenu.querySelectorAll('button').forEach(b=>b.onclick=()=>setMode(b.dataset.m));
-document.addEventListener('click',e=>{if(!modeMenu.hidden&&!(e.target.closest&&e.target.closest('.mode')))modeMenu.hidden=true});
-const PROMPT='You extract damage-calculator inputs from the text of a Limbus Company wiki Identity page (one playable character ID).\n'+
-'Rules:\n'+
-'- Assume every condition is met at its MAXIMUM possible value. Example: "+1% damage for every 1 Burn on target (max 50)" becomes dynamicPct 50. "Final Power +1 for every 4 Bleed (max 4)" becomes finalPower 1.\n'+
-'- Treat "Deal +X% damage" effects as dynamic (dynamicPct). Use staticPct only for effects the page describes as adding with resistances or as damage taken modifiers.\n'+
-'- skills: list EVERY skill variant (Skill 1, 2, 3 and Defense, including numbered variants such as "Skill 1 - 1"). If a skill is shown in several Uptie tiers (Tier 1 to 4), read ONLY the highest tier (Tier IV / 4), which is listed first, and ignore the lower ones. coins = number of coins of the skill. base = Base Power plus any conditional Base Power bonus at max. coinPower = the Coin Power (the number after the plus sign) plus any conditional Coin Power bonus at max. offense = ONLY the skill\'s own Offense Level modifier, which is the number after the plus inside the parentheses (3 in "68 (65+3)"; never 68 and never 65). offenseBonus = extra Offense Level from the skill\'s own conditionals at max. atkWeight = number of targets at max. finalPower = sum of the skill\'s own Final Power bonuses at max. dynamicPct = sum of the skill\'s own "% damage" conditionals at max. staticPct as above.\n'+
-'- coinEffects: only effects of one specific coin that change damage (coin numbers start at 1): dynamicPct, staticPct, bonusPct (extra damage as a % of that coin\'s final damage), finalPower, mult (multiplier, 1 if none), flat (fixed extra damage), bonusType ("Slash", "Pierce" or "Blunt" when the page says that bonus damage is of that type, otherwise an empty string), text (short).\n'+
-'- userEffects: passives, status effects and states of the unit that raise its own damage, power, crit or offense (for example "When in X state, deal +50% damage"), at max stacks. Give each a short source and text and the numbers dynamicPct, staticPct, critChance (in %), offenseBonus, finalPower, critDynamicPct.\n'+
-'- States and passives: skill texts contain descriptions of states and statuses (for example "Uncontrollable Rampage", "Noble Dignity"), and the page has a Support Passive section. IGNORE the Combat Passives section completely (those passives rarely trigger for the user), but still read every state described inside the skill texts (for example "Desperate Hunger"). For EACH state, status or passive that raises damage, power or offense, add ONE userEffects entry per effect line, with its numbers at max: "Offense Level +1 for every Stack (max 3)" is offenseBonus 3, "Deal +1% damage for every Bleed on self (max 15%)" is dynamicPct 15, "Base Skills Base Power +1" is basePower 1 with scope "base". Never merge different states into one entry and never skip an effect because it sits inside a bullet list or a tooltip.\n'+
-'- A skill effect that only works while in a state ("when in X state, deal +50% damage", "Coin Power +1 while in X state") is a userEffects entry (dynamicPct 50, coinPower 1) with scope set to that skill\'s label, not part of the skill\'s own numbers.\n'+
-'- scope: "all" when the effect applies to every skill, "base" for Base Skills, which means EVERY variant of Skill 1 (Skill 1 - 1, Skill 1 - 2, Skill 1 - 3...), otherwise the exact label of the skill it belongs to.\n'+
-'- Use 0 for anything that does not apply (mult 1). Never invent values that are not on the page. Keep text fields under 120 characters.\n'+
-'Return ONLY JSON, no markdown, exactly in this shape:\n'+
-'{"name":string,"skills":[{"label":string,"name":string,"type":string,"coins":number,"base":number,"coinPower":number,"offense":number,"offenseBonus":number,"atkWeight":number,"finalPower":number,"dynamicPct":number,"staticPct":number,"coinEffects":[{"coin":number,"dynamicPct":number,"staticPct":number,"bonusPct":number,"finalPower":number,"mult":number,"flat":number,"bonusType":string,"text":string}]}],"userEffects":[{"source":string,"text":string,"dynamicPct":number,"staticPct":number,"critChance":number,"offenseBonus":number,"finalPower":number,"critDynamicPct":number,"basePower":number,"coinPower":number,"scope":string}]}';
-const cleanTxt=t=>t.replace(/!\[[^\]]*\]\([^)]*\)/g,'').replace(/\[([^\]]*)\]\([^)]*\)/g,'$1').replace(/[ \t]+/g,' ').replace(/\n{3,}/g,'\n\n').trim();
-const nn=(v,mn,mx,d=0)=>{v=parseFloat(v);return isFinite(v)?Math.min(mx,Math.max(mn,v)):d};
-const tx=(v,n)=>String(v==null?'':v).slice(0,n);
-function normalize(o){
- if(!o||!Array.isArray(o.skills)||!o.skills.length)throw{code:'invalid_json'};
- return{name:tx(o.name||'Unknown ID',120),
-  skills:o.skills.slice(0,40).map(s=>({label:tx(s.label||s.name||'Skill',60),name:tx(s.name,60),type:tx(s.type,12),coins:Math.round(nn(s.coins,1,50,1)),base:nn(s.base,0,999),coinPower:nn(s.coinPower,-99,999),offense:nn(s.offense,-99,999),offenseBonus:nn(s.offenseBonus,-99,99),atkWeight:Math.round(nn(s.atkWeight,1,15,1)),finalPower:nn(s.finalPower,-99,999),dynamicPct:nn(s.dynamicPct,-100,1000),staticPct:nn(s.staticPct,-100,1000),
-   coinEffects:(Array.isArray(s.coinEffects)?s.coinEffects:[]).slice(0,50).map(c=>({coin:Math.round(nn(c.coin,1,50,1)),dynamicPct:nn(c.dynamicPct,-100,1000),staticPct:nn(c.staticPct,-100,1000),bonusPct:nn(c.bonusPct,0,1000),finalPower:nn(c.finalPower,-99,999),mult:nn(c.mult,0,100,1),flat:Math.round(nn(c.flat,0,9999)),bonusType:['Slash','Pierce','Blunt'].find(t=>t.toLowerCase()===String(c.bonusType||'').toLowerCase())||'',text:tx(c.text,140)}))})),
-  userEffects:(Array.isArray(o.userEffects)?o.userEffects:[]).slice(0,40).map(u=>({source:tx(u.source,60),text:tx(u.text,140),dynamicPct:nn(u.dynamicPct,-100,1000),staticPct:nn(u.staticPct,-100,1000),critChance:nn(u.critChance,0,100),offenseBonus:nn(u.offenseBonus,-99,99),finalPower:nn(u.finalPower,-99,999),critDynamicPct:nn(u.critDynamicPct,-100,1000),basePower:nn(u.basePower,-99,99),coinPower:nn(u.coinPower,-99,99),scope:tx(u.scope||'all',40),on:true}))}}
-let IMP=null,ictl=null;
-const say=(t,err)=>{const e=$('istatus');e.textContent=t;e.className='ist'+(err?' err':'')};
-const ERR={not_granted:'Permission was denied. Allow Claude when asked, then try again.',rate_limited:'Too many requests. Wait a moment and try again.',prompt_too_large:'The pasted text is too large. Paste only the page\u2019s Skills section.',invalid_json:'Claude did not return a usable answer (the page may be too long). Try again, or paste only the Skills section.',cancelled:'Stopped.',sampling_disabled:'Claude analysis is turned off for your account.',capability_disabled:'Claude analysis is turned off for this page.',not_declared:'This page is not allowed to use Claude analysis.'};
-async function runAnalyze(){
- const raw=cleanTxt($('itext').value);
- if(raw.length<500)return say('Paste the page text first: open the ID page on the wiki, press Ctrl+A, then Ctrl+C, and paste it in the box above.',1);
- const sample=typeof claude!=='undefined'?await claude.use('sample'):null;
- if(!sample)return say('Claude analysis is not available in this view. Open the site inside claude.ai while signed in.',1);
- ictl=new AbortController();$('ianalyze').disabled=true;$('istop').hidden=false;say('Thinking... Claude is reading the page. This can take up to a minute or two.');
- try{const out=await sample.json([{role:'user',content:PROMPT+'\n\nPAGE TEXT:\n'+raw.slice(0,150000)}],{modelTier:'complex',signal:ictl.signal});
-  IMP=normalize(out);renderImport();say('Done. Check the values below against the wiki, then import.')}
- catch(e){say(ERR[e&&e.code]||'Something went wrong'+(e&&e.code?' ('+e.code+')':'')+'. Try again later.',1)}
- finally{$('ianalyze').disabled=false;$('istop').hidden=true;ictl=null}}
-function skillChips(sk){const c=[['Coins',sk.coins],['Base Power',sk.base],['Coin Power',sk.coinPower],['Offense Level',sk.offense+sk.offenseBonus],['Extra Final Power',sk.finalPower],['Skill Dynamic %',sk.dynamicPct],['Skill Static %',sk.staticPct],['Atk Weight',sk.atkWeight]];
- $('isum').innerHTML=c.map(([l,v])=>`<div class="chip"><b>${v}</b><span>${l}</span></div>`).join('');
- $('icoinfx').innerHTML=sk.coinEffects.map(c=>`<div class="cfx"><b>Coin ${c.coin}:</b> ${[c.dynamicPct&&`+${c.dynamicPct}% dynamic`,c.staticPct&&`+${c.staticPct}% static`,c.bonusPct&&`bonus ${c.bonusPct}% of final damage${c.bonusType?' ('+c.bonusType+')':''}`,c.finalPower&&`final power ${c.finalPower>0?'+':''}${c.finalPower}`,c.mult!==1&&`\u00d7${c.mult}`,c.flat&&`flat +${c.flat}`].filter(Boolean).join(' \u00b7 ')||'no damage effect'} ${c.text?'\u2014 '+esc(c.text):''}</div>`).join('')}
-function renderImport(){
- $('iname').textContent=IMP.name;
- $('iskill').innerHTML=IMP.skills.map((s,i)=>`<option value="${i}">${esc(s.label)}${s.name?' \u00b7 '+esc(s.name):''} \u00b7 ${s.base}+${s.coinPower} \u00b7 ${s.coins} coin${s.coins>1?'s':''}</option>`).join('');
- skillChips(IMP.skills[0]);
- $('ieff').innerHTML=IMP.userEffects.length?IMP.userEffects.map((u,i)=>`<label class="eff"><input type="checkbox" data-u="${i}" checked><span><b>${esc(u.source||'Effect')}</b> ${esc(u.text)}<small>${[u.dynamicPct&&`+${u.dynamicPct}% dynamic`,u.staticPct&&`+${u.staticPct}% static`,u.critChance&&`+${u.critChance}% crit chance`,u.critDynamicPct&&`+${u.critDynamicPct}% dynamic crit`,u.offenseBonus&&`offense ${u.offenseBonus>0?'+':''}${u.offenseBonus}`,u.finalPower&&`final power ${u.finalPower>0?'+':''}${u.finalPower}`,u.basePower&&`base power ${u.basePower>0?'+':''}${u.basePower}`,u.coinPower&&`coin power ${u.coinPower>0?'+':''}${u.coinPower}`].filter(Boolean).join(' \u00b7 ')||'no numeric bonus'}${u.scope&&u.scope.toLowerCase()!=='all'?' \u00b7 only: '+esc(u.scope==='base'?'Skill 1 (Base Skills)':u.scope):''}</small></span></label>`).join(''):'<p class="hint">No user effects were found.</p>';
- $('ires').hidden=false}
-function applyImport(){
- const sk=IMP&&IMP.skills[+$('iskill').value];if(!sk)return;
- const fits=u=>{const sc=(u.scope||'all').toLowerCase();return sc==='all'||sc===''||(sc==='base'&&/^skill\s*1/i.test(sk.label))||sc===sk.label.toLowerCase()||sc===sk.name.toLowerCase()};
- const ue=IMP.userEffects.filter(u=>u.on&&fits(u)),sum=k=>ue.reduce((a,u)=>a+u[k],0);
- const v={N:sk.coins,base:sk.base+sum('basePower'),cp:sk.coinPower+sum('coinPower'),off:sk.offense+sk.offenseBonus,fp:sk.finalPower+sum('finalPower'),clash:0,sstat:sk.staticPct,sdyn:sk.dynamicPct,aw:sk.atkWeight,sub:0,obonus:sum('offenseBonus'),ustat:sum('staticPct'),udyn:sum('dynamicPct'),critp:Math.min(100,sum('critChance')),sc:0,cdyn:sum('critDynamicPct')};
- for(const k in v)$(k).value=clampTo(v[k],lim[k]);
- coins.length=0;lastN=0;sand=[];render();
- sk.coinEffects.forEach(c=>{const co=coins[c.coin-1];if(!co)return;co.dyn=cl('dyn',co.dyn+c.dynamicPct);co.stat=cl('stat',co.stat+c.staticPct);co.bonus=cl('bonus',co.bonus+c.bonusPct);if(c.bonusType&&c.bonusPct>0&&c.bonusType.toLowerCase()!==String(sk.type).toLowerCase()){co.bdiff=1;co.btype=c.bonusType}co.fp=cl('fp',co.fp+c.finalPower);co.mult=cl('mult',co.mult*c.mult);co.flat=cl('flat',co.flat+c.flat)});
- lastN=0;render();setMode('calc');
- const n=$('impnote');n.innerHTML=`<span>Imported <b>${esc(IMP.name)}</b> \u00b7 ${esc(sk.label)}. Values are at their maximum. Check them against the wiki and edit anything you need.</span><button aria-label="Close">&times;</button>`;n.hidden=false;n.querySelector('button').onclick=()=>{n.hidden=true}}
-$('ianalyze').onclick=runAnalyze;$('istop').onclick=()=>{if(ictl)ictl.abort()};
-$('iskill').onchange=()=>skillChips(IMP.skills[+$('iskill').value]);
-$('ieff').addEventListener('change',e=>{const t=e.target;if(t.dataset&&t.dataset.u!==undefined)IMP.userEffects[+t.dataset.u].on=t.checked});
-$('iapply').onclick=applyImport;
-
 $('setbest').onclick=()=>{sand=lastSeq.map(x=>({h:x.h,c:x.c}));render()};
 applySettings(false);
 render();
